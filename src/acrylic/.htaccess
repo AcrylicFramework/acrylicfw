@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Rewrite requests to existing .php files
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# Redirect all other requests to index.php, excluding /assets directory
+RewriteCond %{REQUEST_URI} !/assets/* [NC]
+RewriteRule ^ index.php [L]

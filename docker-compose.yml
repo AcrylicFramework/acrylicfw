@@ -1,0 +1,18 @@
+services:
+  acrylic:
+    container_name: acrylic
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    tty: true
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/var/www/acrylic
+    networks:
+      - acrylic-network
+networks:
+  acrylic-network:
+    driver: bridge
